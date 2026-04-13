@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usama Naeem — DTC Google & YouTube Ads</title>
+<meta name="description" content="Your Google & YouTube Ads guy for DTC brands. $100M+ managed spend.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#00D26A;
+  --green-dim:rgba(0,210,106,0.1);
+  --green-border:rgba(0,210,106,0.25);
+  --bg:#080808;
+  --bg2:#0e0e0e;
+  --bg3:#141414;
+  --text:#ffffff;
+  --muted:rgba(255,255,255,0.45);
+  --faint:rgba(255,255,255,0.1);
+  --border:rgba(255,255,255,0.07);
+  --red:#FF3B3B;
+  --red-dim:rgba(255,59,59,0.1);
+  --red-border:rgba(255,59,59,0.3);
+  --font-display:'Clash Display','Syne',sans-serif;
+  --font-body:'Syne',sans-serif;
+  --font-mono:'DM Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,210,106,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,106,0.022) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0}
+.glow-top{position:fixed;top:-220px;left:50%;transform:translateX(-50%);width:800px;height:560px;background:radial-gradient(ellipse,rgba(0,210,106,0.065) 0%,transparent 65%);pointer-events:none;z-index:0}
+
+.wrap{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:0 28px 80px}
+
+/* ── HERO ── */
+.hero{padding:80px 0 0;text-align:center;opacity:0;animation:up .7s ease .1s forwards}
+.blob-wrap{width:112px;height:112px;margin:0 auto 32px;position:relative}
+.blob-wrap svg{width:100%;height:100%;animation:wobble 5s ease-in-out infinite}
+@keyframes wobble{0%,100%{transform:scale(1) rotate(0deg)}33%{transform:scale(1.05) rotate(3deg)}66%{transform:scale(0.96) rotate(-2deg)}}
+.blob-inner{position:absolute;inset:15px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:32px;border:1px solid var(--green-border)}
+
+.eyebrow{font-family:var(--font-mono);font-size:11px;color:var(--green);letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:12px}
+.eyebrow::before,.eyebrow::after{content:'';width:32px;height:1px;background:var(--green-border)}
+
+.hero-name{font-family:var(--font-display);font-size:72px;font-weight:700;letter-spacing:-.02em;line-height:.95;margin-bottom:8px;text-transform:uppercase}
+.hero-name .green{color:var(--green)}
+.sq{display:inline-block;position:relative}
+.sq::after{content:'';position:absolute;bottom:-6px;left:0;right:0;height:4px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='4'%3E%3Cpath d='M0 2 Q4 0 8 2 Q12 4 16 2' stroke='%2300D26A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") repeat-x}
+
+.hero-desc{font-size:16px;color:var(--muted);line-height:1.7;max-width:440px;margin:28px auto 0;font-weight:400}
+.hero-desc strong{color:rgba(255,255,255,.82);font-weight:700}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:40px 0;opacity:0;animation:up .7s ease .2s forwards}
+.stat{background:var(--bg2);padding:20px 16px;text-align:center}
+.stat-n{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--green);display:block;letter-spacing:-.01em}
+.stat-l{font-family:var(--font-mono);font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;display:block}
+
+/* ── DANGER BANNER ── */
+.danger-banner{
+  background:var(--red-dim);
+  border:1px solid var(--red-border);
+  border-radius:12px;
+  padding:14px 20px;
+  margin-bottom:16px;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  opacity:0;
+  animation:up .7s ease .22s forwards;
+}
+.danger-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.danger-text{font-family:var(--font-mono);font-size:12px;color:rgba(255,100,100,0.9);line-height:1.65}
+.danger-text strong{color:#ff6b6b;font-weight:500}
+
+/* ── CTA ── */
+.cta-row{display:flex;justify-content:center;margin-bottom:64px;opacity:0;animation:up .7s ease .25s forwards}
+.btn-main{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--green);color:#000;font-family:var(--font-display);font-size:16px;font-weight:600;border-radius:100px;text-decoration:none;letter-spacing:.02em;box-shadow:0 0 40px rgba(0,210,106,0.25);transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden}
+.btn-main::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent 55%)}
+.btn-main:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 0 60px rgba(0,210,106,0.4)}
+.arr{transition:transform .2s}
+.btn-main:hover .arr{transform:translateX(4px)}
+
+/* ── DIVIDER ── */
+.divider{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.div-line{flex:1;height:1px;background:var(--border)}
+.div-label{font-family:var(--font-mono);font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.14em;white-space:nowrap}
+
+/* ── SERVICES ── */
+.services{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:56px;opacity:0;animation:up .7s ease .3s forwards}
+.svc{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .2s,transform .15s;position:relative;overflow:hidden;cursor:default}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent);opacity:0;transition:opacity .2s}
+.svc:hover{border-color:var(--green-border);transform:translateY(-3px)}
+.svc:hover::before{opacity:1}
+.svc-icon{font-size:28px;margin-bottom:12px;display:block}
+.svc-title{font-family:var(--font-display);font-size:16px;font-weight:600;display:block;margin-bottom:6px;letter-spacing:.01em}
+.svc-desc{font-family:var(--font-mono);font-size:11px;color:var(--muted);line-height:1.65}
+
+/* ── INDUSTRY CARDS ── */
+.industries{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:56px;opacity:0;animation:up .7s ease .32s forwards}
+.ind-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;cursor:default}
+.ind-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.ind-icon{font-size:22px}
+.ind-name{font-family:var(--font-display);font-size:15px;font-weight:600;letter-spacing:.01em}
+.ind-stat{display:flex;flex-direction:column;gap:6px}
+.ind-row{display:flex;justify-content:space-between;align-items:center}
+.ind-key{font-family:var(--font-mono);font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+.ind-val{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--green)}
+.ind-divider{height:1px;background:var(--border);margin:8px 0}
+
+/* ── FAQ ── */
+.faq{margin-bottom:56px;opacity:0;animation:up .7s ease .35s forwards}
+.faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden;background:var(--bg2)}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-family:var(--font-display);font-size:16px;font-weight:600;text-align:left;padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;letter-spacing:.01em;transition:color .2s}
+.faq-q:hover{color:var(--green)}
+.faq-icon{font-size:18px;color:var(--muted);transition:transform .3s,color .2s;flex-shrink:0}
+.faq-q:hover .faq-icon{color:var(--green)}
+.faq-a{font-family:var(--font-mono);font-size:12px;color:var(--muted);line-height:1.75;padding:0 24px;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 20px}
+.faq-item.open .faq-icon{transform:rotate(45deg);color:var(--green)}
+.faq-item.open{border-color:var(--green-border)}
+
+/* ── FOOTER ── */
+footer{padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;opacity:0;animation:up .7s ease .4s forwards}
+.ft-left{font-family:var(--font-mono);font-size:11px;color:var(--faint)}
+.ft-right{font-family:var(--font-mono);font-size:11px;color:var(--faint);display:flex;gap:16px}
+.ft-right a{color:var(--faint);text-decoration:none;transition:color .2s}
+.ft-right a:hover{color:var(--green)}
+
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){
+  .hero-name{font-size:52px}
+  .services,.industries{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="glow-top"></div>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="blob-wrap">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00D26A;stop-opacity:.35"/>
+            <stop offset="100%" style="stop-color:#00D26A;stop-opacity:.07"/>
+          </linearGradient>
+        </defs>
+        <path d="M50,4 C70,2 92,20 94,42 C96,64 80,86 60,93 C40,100 16,92 7,72 C-2,52 8,26 24,14 C36,4 36,6 50,4 Z" fill="url(#g1)" stroke="#00D26A" stroke-width="1.2" opacity=".9"/>
+      </svg>
+      <div class="blob-inner">🧠</div>
+    </div>
+    <div class="eyebrow">DTC Growth Specialist</div>
+    <h1 class="hero-name">Usama<br><span class="sq green">Naeem</span></h1>
+    <p class="hero-desc">
+      <strong>Your Google &amp; YouTube Ads guy</strong> for DTC brands.<br>
+      I find where your ad spend leaks — then fix it.<br>
+      <strong>$100M+</strong> managed. Every claim has receipts.
+    </p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-n">$100M+</span>
+      <span class="stat-l">Managed Spend</span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">6 Yrs</span>
+      <span class="stat-l">Media Buying</span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">DTC</span>
+      <span class="stat-l">Only</span>
+    </div>
+  </div>
+
+  <!-- DANGER BANNER -->
+  <div class="danger-banner">
+    <span class="danger-icon">⚠️</span>
+    <p class="danger-text">
+      <strong>Your blended ROAS is lying to you.</strong> Most DTC brands on Google are losing 40–70% of their ad budget to brand search — customers who were already going to buy. You're not scaling, you're just paying Google to intercept your own demand. Find out exactly how bad it is 👇
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-row">
+    <a href="https://calculate.advortex.io" target="_blank" class="btn-main">
+      ⚡ Calculate Your Real ROAS <span class="arr">→</span>
+    </a>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="divider"><div class="div-line"></div><span class="div-label">what i do</span><div class="div-line"></div></div>
+  <div class="services">
+    <div class="svc">
+      <span class="svc-icon">🎯</span>
+      <span class="svc-title">Google Search & Shopping</span>
+      <span class="svc-desc">Hard brand vs non-brand splits. NC ROAS as the north star — not blended vanity metrics.</span>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">📺</span>
+      <span class="svc-title">YouTube & Demand Gen</span>
+      <span class="svc-desc">Prospecting campaigns that reach cold audiences — not just remarketing loops dressed up as growth.</span>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">🤖</span>
+      <span class="svc-title">pMAX Architecture</span>
+      <span class="svc-desc">Built properly from day one. Asset groups, signals, supplemental feeds — no black box BS.</span>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">📊</span>
+      <span class="svc-title">New Customer Tracking</span>
+      <span class="svc-desc">First order tagging, NC CPA targets, Shopify as source of truth. See exactly who's actually new.</span>
+    </div>
+  </div>
+
+  <!-- INDUSTRY CARDS -->
+  <div class="divider"><div class="div-line"></div><span class="div-label">industries scaled</span><div class="div-line"></div></div>
+  <div class="industries">
+
+    <div class="ind-card">
+      <div class="ind-top"><span class="ind-icon">👗</span><span class="ind-name">Fashion & Apparel</span></div>
+      <div class="ind-stat">
+        <div class="ind-row"><span class="ind-key">Monthly Spend</span><span class="ind-val">$50K–$300K</span></div>
+        <div class="ind-divider"></div>
+        <div class="ind-row"><span class="ind-key">Avg NC ROAS</span><span class="ind-val">3.8–5.2x</span></div>
+        <div class="ind-divider"></div>
+        <div class="ind-row"><span class="ind-key">Key Channel</span><span class="ind-val">Shopping + pMAX</span></div>
+      </div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-top"><span class="ind-icon">💊</span><span class="ind-name">Supplements & Health</span></div>
+      <div class="ind-stat">
+        <div class="ind-row"><span class="ind-key">Monthly Spend</span><span class="ind-val">$80K–$500K</span></div>
+        <div class="ind-divider"></div>
+        <div class="ind-row"><span class="ind-key">Avg NC CPA</span><span class="ind-val">$28–$55</span></div>
+        <div class="ind-divider"></div>
+        <div class="ind-row"><span class="ind-key">Key Channel</span><span class="ind-val">Search + YouTube</span></div>
+      </div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-top"><span class="ind-icon">🏠</span><span class="ind-name">Home & Living</span></div>
+      <div class="ind-stat">
+        <div class="ind-row"><span class="ind-key">Monthly Spend</span><span class="ind-val">$30K–$200K</span></div>
+        <div class="ind-divider"></div>
+        <div class="ind-row"><span class="ind-key">Avg NC ROAS</span><span class="ind-val">4.5–7x</span></div>
+        <div class="ind-divider"></div>
+        <div class="ind-row"><span class="ind-key">Key Channel</span><span class="ind-val">Shopping + Demand Gen</span></div>
+      </div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ind-top"><span class="ind-icon">💄</span><span class="ind-name">Beauty & Skincare</span></div>
+      <div class="ind-stat">
+        <div class="ind-row"><span class="ind-key">Monthly Spend</span><span class="ind-val">$40K–$250K</span></div>
+        <div class="ind-divider"></div>
+        <div class="ind-row"><span class="ind-key">Avg NC CPA</span><span class="ind-val">$18–$42</span></div>
+        <div class="ind-divider"></div>
+        <div class="ind-row"><span class="ind-key">Key Channel</span><span class="ind-val">pMAX + YouTube</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="divider"><div class="div-line"></div><span class="div-label">common questions</span><div class="div-line"></div></div>
+  <div class="faq">
+
+    <div class="faq-item">
+      <button class="faq-q">We're already hitting 4x+ ROAS. Why would we need you?<span class="faq-icon">+</span></button>
+      <div class="faq-a">That 4x is almost certainly blended — Google is counting brand searches where people already knew you and were going to buy anyway. Separate brand from non-brand and run the real numbers. Most accounts I take over show 60–80% of conversions are brand. Your actual new customer ROAS is probably 1.5–2x. That's the number that tells you if Google is actually growing your business.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">We tried Google Ads before and it didn't work.<span class="faq-icon">+</span></button>
+      <div class="faq-a">Usually one of three things: wrong structure (pMAX doing everything with no controls), no conversion value rules to teach Google who a new customer is, or a product-market fit issue no media buyer can fix. I audit before I commit — if Google isn't right for your brand right now, I'll tell you directly instead of taking your money.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Can't I just let pMAX run everything?<span class="faq-icon">+</span></button>
+      <div class="faq-a">pMAX left unsupervised defaults to hoovering up brand search budget — it's the easiest conversion to claim credit for. The result is inflated ROAS and flat new customer growth. It needs brand exclusions, proper asset groups, supplemental feeds, and audience signals to work. "Set it and forget it" is Google's pitch, not a real strategy.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Do you also run Meta or TikTok?<span class="faq-icon">+</span></button>
+      <div class="faq-a">No. Google and YouTube only — that's the entire focus. The brands I work with already have Meta handled or use a separate specialist. Depth beats breadth every time.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">What spend level do you work with?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Sweet spot is $15K–$200K/month on Google. Below that, the account often lacks the data velocity for strategies that actually move the needle. Above $200K, reach out via Advortex and we'll scope it properly.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">How do I know if I have the brand search problem?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Use the free calculator at calculate.advortex.io — plug in your numbers and it shows exactly how much of your reported ROAS is brand-inflated vs real new customer performance. Takes 60 seconds and most people are genuinely shocked by the output.</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="ft-left">© 2026 Usama Naeem</span>
+    <div class="ft-right">
+      <a href="https://advortex.io">advortex.io</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
